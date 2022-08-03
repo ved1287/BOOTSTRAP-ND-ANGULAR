@@ -1,0 +1,47 @@
+<p>test2 works!</p>
+{{studentForm.value|json}}
+<form #studentForm="ngForm">
+    <table>
+        <tr>
+            <td><label>Name</label></td>
+            <td><input  minlength="5"
+               
+                #username="ngModel"
+                name="name" [(ngModel)]="stdname">
+           <div *ngIf="username.touched && username.invalid">Name is Invalid</div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>RollNo</label></td>
+            <td><input 
+                required
+                name="rollno" 
+                #userroll="ngModel"
+                [(ngModel)]="stdroll">
+           <div *ngIf="userroll.touched && userroll.invalid">RollNo is Required</div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Mark1</label></td>
+            <td><input type="number"  min="0" max="100"
+                name="mark1" #usermark1="ngModel" [(ngModel)]="stdmark1">
+                <div *ngIf="usermark1.touched && usermark1.invalid">Mark1 is Invalid</div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Mark2</label></td>
+            <td><input type="number" min="0" max="100"  name="mark2"
+             #usermark2="ngModel" [(ngModel)]="stdmark2">
+                
+                <div *ngIf="usermark2.touched && usermark2.invalid">Mark2 is Invalid</div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Mark3</label></td>
+            <td><input type="number" min="0" max="100" #usermark3="ngModel"
+                name="mark3" [(ngModel)]="stdmark3">
+                <div *ngIf="usermark3.touched && usermark3.invalid">Mark3 is Invalid</div>
+            </td>
+        </tr>
+    </table>
+</form>

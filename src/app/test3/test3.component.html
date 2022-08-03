@@ -1,0 +1,22 @@
+<p>test3 works!</p>
+<form [formGroup]="simpleForm">
+    <table>
+        <tr>
+            <td><label>Name</label></td>
+            <input formControlName="myname">
+            <div style="color:red;" *ngIf="simpleForm.get('myname').touched && simpleForm.get('myname').invalid">Name is Mandatory</div>
+        </tr>
+        <tr>
+            <td><label>E-mail</label></td>
+            <input formControlName="myemail">
+            <div style="color:red;" *ngIf="simpleForm.get('myemail').touched && simpleForm.get('myemail').invalid && simpleForm.get('myemail').errors?.minlength">E-mail should be min of 5 characters length</div>
+            <div style="color:red;" *ngIf="simpleForm.get('myemail').touched && simpleForm.get('myemail').invalid && simpleForm.get('myemail').errors?.maxlength">E-mail should be max of 15 characters length</div>
+        </tr>
+        <tr>
+            <td><label>Salary</label></td>
+            <input formControlName="mysalary">
+            <div style="color:red;" *ngIf="simpleForm.get('mysalary').touched && simpleForm.get('mysalary').invalid && simpleForm.get('mysalary').errors?.min">Salary should not be less than 1000</div>
+            <div style="color:red;" *ngIf="simpleForm.get('mysalary').touched && simpleForm.get('mysalary').invalid && simpleForm.get('mysalary').errors?.max">Salary should not be more than 5000</div>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,30 @@
+<p>test1 works!</p>
+{{simpleForm.value|json}}
+<form #simpleForm="ngForm">
+    <table>
+        <tr>
+            <td><label>NAME</label></td>
+            <td><input 
+                required
+                #username="ngModel"
+                name="txtname" [(ngModel)]="myname">
+           <div *ngIf="username.touched && username.invalid">Name is Mandatory</div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>E-MAIL</label></td>
+            <td><input 
+                minlength="5" maxlength="15"
+                name="txtemail" 
+                #useremail="ngModel"
+                [(ngModel)]="myemail">
+           <div *ngIf="useremail.touched && useremail.invalid">E-mail is Invalid</div>
+            </td>
+        </tr>
+        <tr>
+            <td><label>DESCRIPTION</label></td>
+            <td><input
+                name="txtdesc" [(ngModel)]="mydescription"></td>
+        </tr>
+    </table>
+</form>
