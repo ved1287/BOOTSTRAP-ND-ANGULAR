@@ -1,30 +1,23 @@
 <p>test1 works!</p>
-{{simpleForm.value|json}}
-<form #simpleForm="ngForm">
+<form [formGroup]="categoryForm">
     <table>
         <tr>
-            <td><label>NAME</label></td>
-            <td><input 
-                required
-                #username="ngModel"
-                name="txtname" [(ngModel)]="myname">
-           <div *ngIf="username.touched && username.invalid">Name is Mandatory</div>
-            </td>
+            <td><label>Name</label></td>
+            <input formControlName="categoryname">
+            <div style="color:red;" *ngIf="categoryForm.get('categoryname').touched && categoryForm.get('categoryname').invalid && categoryForm.get('categoryname').errors?.minlength">Name should be min of 5 characters length</div>
+            <div style="color:red;" *ngIf="categoryForm.get('categoryname').touched && categoryForm.get('categoryname').invalid && categoryForm.get('categoryname').errors?.maxlength">Name should be max of 15 characters length</div>
         </tr>
         <tr>
-            <td><label>E-MAIL</label></td>
-            <td><input 
-                minlength="5" maxlength="15"
-                name="txtemail" 
-                #useremail="ngModel"
-                [(ngModel)]="myemail">
-           <div *ngIf="useremail.touched && useremail.invalid">E-mail is Invalid</div>
-            </td>
+            <td><label>Description</label></td>
+            <input formControlName="categorydesc">
+           
         </tr>
         <tr>
-            <td><label>DESCRIPTION</label></td>
-            <td><input
-                name="txtdesc" [(ngModel)]="mydescription"></td>
+            <td colspan="2">
+                <button (click)="Add()">Add</button>
+            </td>
         </tr>
     </table>
 </form>
+{{categoryResponse |json}}
+

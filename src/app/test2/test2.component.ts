@@ -1,4 +1,6 @@
+import { findLast } from '@angular/compiler/src/directive_resolver';
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-test2',
@@ -7,13 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Test2Component implements OnInit {
 
-  constructor() { }
-  public stdname;
-  public stdroll;
-  public stdmark1;
-  public stdmark2;
-  public stdmark3;
+  constructor(private rs:RestService) { }
+  public oneCategory;
   ngOnInit() {
   }
-
+    find(id){
+this.rs.getDataFromServer1(id).subscribe(
+  (data)=>{
+    
+    this.oneCategory=data;
+  }
+)
+    
 }
+}
+
+

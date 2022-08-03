@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-test3',
@@ -8,13 +8,19 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class Test3Component implements OnInit {
 
-  constructor(private fb:FormBuilder ) { }
-  simpleForm=this.fb.group({
-  myname:['Zensar',Validators.required],
- myemail:['',[Validators.minLength(5),Validators.maxLength(15)]],
- mysalary:['0',[Validators.min(1000),Validators.max(5000)]]
-})
+  constructor(private rs:RestService) { }
+  public Advertise=[];
   ngOnInit() {
   }
+  find(userName){
+    this.rs.getDataFromServer2(userName).subscribe(
+      (data)=>{
+        
+        this.Advertise=data;
+      }
+    )
+        
+    
+    }
 
 }
